@@ -4,7 +4,6 @@ This repository has been set up to get you started in completing your capstone p
 ## Contents
   * [Project Overview](#project-overview)
     + [Prioritized Features](#prioritized-features)
-    + [Grading Scheme](#grading-scheme)
   * [Project Details](#project-details)
     + [Prioritized Features](#prioritized-features-1)
     + [Definition of Done](#definition-of-done)
@@ -29,8 +28,7 @@ This repository has been set up to get you started in completing your capstone p
         * [Establishment Purchase or Landmark Construction](#establishment-purchase-or-landmark-construction)
         * [End of Turn](#end-of-turn)
         * [End of Game](#end-of-game)
-        * [Human Interface Menus/Queries](#human-interface-menus-queries)
-      - [Graphical Interface (GUI)](#graphical-interface--gui-)
+        * [Menus/Queries](#human-interface-menus-queries)
       - [Network Implementation](#network-implementation)
   * [Technical Details](#technical-details)
     + [Prerequisites](#prerequisites)
@@ -88,26 +86,6 @@ The core features for this project are as follows and will be explained in detai
 11. Play the Phase 6 console version of the game over the network with 2 human players.
 12. Play the Phase 6 version of the game (using both console and/or GUI clients) over the network with 2 human and 2 strategic AI players.
 
-### Grading Scheme
-This project is worth 50 points (50% of the total grade for the course). These points are awarded in two ways. First, each of the 4 sprints end in a sprint review, at which point I evaluate your team's work. Each sprint is worth a maximum of 10 points for each member of the team. (Except in highly unusual circumstances, all members receive the same grade for a sprint.) Second, the final 10 points are determined according to how many features you complete by the project's final deadline. That scale is as follows, determined by the final feature that your team completes:
-
-| Feature | Points |
-|---------|--------|
-| 1       | 0      |
-| 2       | 0      |
-| 3       | 0      |
-| 4       | 0      |
-| 5       | 1      |
-| 6       | 2      |
-| 7       | 4      |
-| 8       | 6      |
-| 9       | 8      |
-| 10      | 10     |
-| 11      | 13     |
-| 12      | 16     |
-
-Note that it is possible to receive more than 10 points for this component, with any additional points counting as "bonus" toward the final course grade.
-
 
 ## Project Details
 ------------------
@@ -121,9 +99,7 @@ Note that it is possible to receive more than 10 points for this component, with
 7. Play the Phase 5 console version of the game with 1 human and 1, 2, or 3 random AI players.
 8. Play the Phase 6 console version of the game with 1 human and 1, 2, or 3 random AI players.
 9. Play the Phase 6 console version of the game with 1 human, 1 strategic AI, and 0, 1, or 2 random AI players.
-10. Play the Phase 6 GUI version of the game with 1 human, 1 strategic AI, and 0, 1, or 2 random AI players.
-11. Play the Phase 6 console version of the game over the network with 2 human players.
-12. Play the Phase 6 version of the game (using both console and/or GUI clients) over the network with 2 human and 2 strategic AI players.
+
 
 ### Definition of Done
 The *definition of done* for **any** feature is that it passes all automated acceptance tests, has a codebase that achieves at least 80% branch coverage from its unit tests, has a fully documented API, and has clear end-user documentation for using the software to play the game. This end-user documentation should be in the form of a Markdown file called "UserGuide.md".
@@ -569,12 +545,6 @@ If a player owns the *Business Complex*, then its activation requires selecting 
 
 The establishments should be formatted as in the other menus and sorted by activation order. Only establishments that can be swapped (non-starting/non-purple) should be listed. It should never happen that such a menu is empty because that player should not have been an option as a target.
 
-
-#### Graphical Interface (GUI)
-The graphical interface must provide at least as much information as the console interface. It is left to the developer to determine the specifics and the layout.
-
-#### Network Implementation
-The network version of the game should allow human players to connect to a given IP (localhost in this case) and port (22020 in this case). Once two players have connected, the game begins for those players and two new players can connect to play a separate game. The game is maintained by the server, with the clients only being used to get information from the users (the menus/queries from the console version, for instance) and to get the current state/log of the game. The protocol for the communication between the clients and server is left to the designer, but it should be clearly documented as a part of the *definition of done*.
 
 
 ## Technical Details
