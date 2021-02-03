@@ -1,5 +1,5 @@
 # Machi WoCo
-This repository has been set up to get you started in completing your capstone project.
+
 
 ## Contents
   * [Project Overview](#project-overview)
@@ -24,8 +24,6 @@ This repository has been set up to get you started in completing your capstone p
         * [Beginning of Turn](#beginning-of-turn)
         * [Current Game State](#current-game-state)
         * [Roll](#roll)
-        * [Establishment Activation](#establishment-activation)
-        * [Establishment Purchase or Landmark Construction](#establishment-purchase-or-landmark-construction)
         * [End of Turn](#end-of-turn)
         * [End of Game](#end-of-game)
         * [Menus/Queries](#human-interface-menus-queries)
@@ -42,7 +40,7 @@ This repository has been set up to get you started in completing your capstone p
 
 ## Project Overview
 -------------------
-In this project, you will be creating an implementation of the board game [Machi Koro](https://boardgamegeek.com/boardgame/143884/machi-koro). The game itself is composed of a deck of cards, a pair of dice, and a set of coins. The cards come in two varieties, establishments and landmarks. Establishments are cards that activate depending on the result of the die/dice roll. Landmarks are cards that give constant benefits once they are constructed. Each player begins with specific starting cards---the *Wheat Field* and *Bakery* establishments, along with the four landmark cards (*Train Station* (4 coins), *Shopping Mall* (10 coins), *Amusement Park* (16 coins), and *Radio Tower* (22 coins)). The first player to construct all four landmarks wins the game. Consult the [detailed rules](https://www.dropbox.com/s/ehpxe4aa6n0ee98/P_MK_Rulebook_7418%20%281%29.pdf) or [the Watch It Played video](https://youtu.be/X6y02IGRE-U) to fully understand how to play.
+This project is an implementation of the board game [Machi Koro](https://boardgamegeek.com/boardgame/143884/machi-koro). The game itself is composed of a deck of cards, a pair of dice, and a set of coins. The cards come in two varieties, establishments and landmarks. Establishments are cards that activate depending on the result of the die/dice roll. Landmarks are cards that give constant benefits once they are constructed. Each player begins with specific starting cards---the *Wheat Field* and *Bakery* establishments, along with the four landmark cards (*Train Station* (4 coins), *Shopping Mall* (10 coins), *Amusement Park* (16 coins), and *Radio Tower* (22 coins)). The first player to construct all four landmarks wins the game. Consult the [detailed rules](https://www.dropbox.com/s/ehpxe4aa6n0ee98/P_MK_Rulebook_7418%20%281%29.pdf) or [the Watch It Played video](https://youtu.be/X6y02IGRE-U) to fully understand how to play.
 
 The entire set of cards can be seen below:
 
@@ -82,9 +80,6 @@ The core features for this project are as follows and will be explained in detai
 7. Play the Phase 5 console version of the game with 1 human and 1, 2, or 3 random AI players.
 8. Play the Phase 6 console version of the game with 1 human and 1, 2, or 3 random AI players.
 9. Play the Phase 6 console version of the game with 1 human, 1 strategic AI, and 0, 1, or 2 random AI players.
-10. Play the Phase 6 GUI version of the game with 1 human, 1 strategic AI, and 0, 1, or 2 random AI players.
-11. Play the Phase 6 console version of the game over the network with 2 human players.
-12. Play the Phase 6 version of the game (using both console and/or GUI clients) over the network with 2 human and 2 strategic AI players.
 
 
 ## Project Details
@@ -418,44 +413,13 @@ The current game state **must** look like the following:
     
     ******************************************
 
-It must start and end with a line of exactly 42 asterisks, followed by a line with the word "MARKET", followed by a line of exactly 42 hyphens. Then, each subsequent line should contain the following, each separated by a single space:
-* name of the establishment (taking up a width of exactly 18 characters, left-aligned and space-padded)
-* two characters representing the color and icon (as described in the *Phase 0* details)
-* the cost in parentheses (taking up a width of exactly 4 characters, left-aligned and space-padded)
-* the activation range in square brackets (taking up a width of exactly 7 characters, left-aligned and space padded)
-* the number available, starting with a single space and the hashtag/pound symbol
-
-So each market entry should be exactly 38 characters long. Also, the market entries should be sorted by activation value, where a single activation value should come before an activation that starts with the same value but has a larger upper bound. (For instance, the *Ranch* should come before the *Bakery* because it activates on 2 instead of 2-3.)
-
-The final market entry should be followed by a blank line, after which the player entries start.
-
-A player entry should begin with a line that contains "Player *N*" (where *N* is the player number), followed by a line of exactly 42 hyphens. The next line should contain the number of coins in parentheses. Then each subsequent line should be formatted just like those in the market, except the final value represents the number of establishments held by the player. The establishments should similarly be sorted by activation value.
-
-Once all establishments have been listed for a player, there should be a line of exactly 42 dots/periods. Then the landmarks should be listed as follows (sorted according to price), each separated by a single space:
-* name of the landmark (taking up a width of exactly 18 characters, left-aligned and space-padded)
-* two characters representing the color and icon (as described in the *Phase 0* details)
-* the cost in parentheses (taking up a width of exactly 4 characters, left-aligned and space-padded)
-* whether it has been constructed in square brackets (taking up a width of exactly 3 characters), where a space represents "not constructed" and an X represents "constructed"
-
-Each player entry is followed by a blank line before the next player entry begins. 
 
 ##### Roll
 A roll should be notified as follows: "Player *N* rolled [3] = 3." or "Player *N* rolled [1][4] = 5." Each die value should be put in its own square brackets, with the total roll following an equals sign. For a single die roll, the value in the brackets would be the same as the total.
 
-##### Establishment Activation
-An establishment activation should be notified as follows: "Forest activated for Player *N*." using the *Forest* as an example.
 
-##### Establishment Purchase or Landmark Construction
-A purchase or construction should be notified as follows: "Player *N* purchased the Furniture Factory." using the *Furniture Factory* as an example establishment, or "Player *N* constructed the Shopping Mall." using the *Shopping Mall* as an example landmark. If the player chooses not to purchase or construct, the notification should say "Player *N* chose not to make improvements."
 
-##### End of Turn
-A turn should end with the notification "Turn ended for Player *N*."
-
-##### End of Game
-A game should end with a notification of the final game state (as described above), along with the notification "The game is over. Player *N* is the winner."
-   
-
-##### Human Interface Menus/Queries
+##### Menus/Queries
 The console interface should also provide the following menus/queries for human players:
 * the menu of establishments and landmarks that a player can purchase
 * the query of whether to roll 1 or 2 dice (if *Train Station* is constructed)
